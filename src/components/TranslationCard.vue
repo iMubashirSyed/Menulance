@@ -73,23 +73,24 @@
           <img src="/feedback.jpg" alt="Feedback icon" class="w-5 h-5">
         </div>
 
-        <!-- Languages Icon -->
+        <!-- Languages Icon and Options -->
         <div
           class="icon-wrapper bg-white p-2 rounded-lg shadow relative transition-all duration-300 hover:bg-gray-200"
           @mouseenter="hoverLanguages = true"
           @mouseleave="hoverLanguages = false"
         >
+          <!-- Languages Icon -->
           <img
             src="/languages.jpg"
             alt="Languages icon"
-            :class="{'translate-y-[-40px]': hoverLanguages}"
+            :class="hoverLanguages ? 'translate-y-[-40px]' : 'translate-y-0'"
             class="w-5 h-5 cursor-pointer transition-transform duration-300"
           />
-          <!-- Dropdown appears below the moved icon -->
+          <!-- Language Options Dropdown -->
           <transition name="expand-linear">
             <div
               v-if="hoverLanguages"
-              class="language-options absolute left-0 top-[40px] bg-white shadow-lg rounded-lg p-2 text-gray-700 space-y-1"
+              class="language-options absolute left-[-15px] top-[-100px] bg-white shadow-lg rounded-lg p-2 text-gray-700 space-y-1"
             >
               <div class="language-option cursor-pointer hover:bg-gray-200 px-2 py-1">EN</div>
               <div class="language-option cursor-pointer hover:bg-gray-200 px-2 py-1">ES</div>
@@ -204,11 +205,22 @@ button {
 .language-options {
   @apply flex flex-col items-center bg-white shadow-lg rounded-lg p-2;
   width: 70px;
+  opacity: 0;
+  transform: translateY(10%);
   transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.icon-wrapper:hover .language-options {
+  opacity: 1;
+  transform: translateY(-10%);
 }
 
 .icon-wrapper img {
   transition: transform 0.3s ease;
+}
+
+.icon-wrapper:hover img {
+  transform: translateY(-40px);
 }
 
 .language-option {
