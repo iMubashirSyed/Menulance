@@ -20,13 +20,13 @@
         >
           More Results
         </button>
-        <button
+        <!-- <button
           v-else
           @click="showLessCards"
           class="bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-600 transition"
         >
           Show Less
-        </button>
+        </button> -->
       </div>
     </div>
   </template>

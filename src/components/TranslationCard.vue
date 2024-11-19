@@ -3,19 +3,24 @@
     <!-- Translation Card -->
     <div :class="['translation-card', showFullCard ? 'expanded' : 'collapsed']">
       <!-- Heading with Copy to Clipboard -->
-      <div class="flex justify-center items-center mb-4">
-        <h1 :class="['text-2xl text-center', showFullCard ? 'font-semibold' : 'font-normal']">
-          <span ref="headingText" v-html="highlightedHeading"></span>
+      <div class="heading-container flex justify-center items-center relative mb-4">
+        <h1
+          ref="headingText"
+          class="inline text-2xl"
+          :class="showFullCard ? 'font-semibold' : 'font-normal'"
+        >
+          <span v-html="highlightedHeading"></span>
         </h1>
         <button
           v-if="showFullCard"
           @click="copyToClipboard(headingText)"
-          class="ml-2 bg-gray-200 hover:bg-gray-300 text-gray-700 p-1 rounded shadow text-sm transition"
+          class="copy-btn ml-2 p-1 rounded shadow text-sm transition"
           title="Copy to clipboard"
         >
-          📋
+          <img src="/copy-document.png" alt="Copy to clipboard" class="copy-icon" />
         </button>
       </div>
+
 
       <!-- Expandable Content -->
       <div v-if="showFullCard">
@@ -24,28 +29,44 @@
           {{ currentPage.meaning }} meaning
         </h2>
         <ul class="text-gray-600 text-base space-y-2 mb-6">
-          <li v-for="(desc, index) in getDescriptions(currentPage.description)" :key="index">
-            {{ index + 1 }}. 
+          <li
+            v-for="(desc, index) in getDescriptions(currentPage.description)"
+            :key="index"
+          >
+            {{ index + 1 }}.
             <span v-if="index === 1 && !showMore">{{ desc.substring(0, desc.length / 2) }}...</span>
             <span v-else>{{ desc }}</span>
-            <button v-if="index === 1 && !showMore" @click="toggleMore" class="text-blue-500">More</button>
+            <button
+              v-if="index === 1 && !showMore"
+              @click="toggleMore"
+              class="text-blue-500"
+            >
+              More
+            </button>
           </li>
         </ul>
 
         <!-- Extra Message -->
-        <div v-if="showMore" class="text-gray-600 text-base mb-6">{{ currentPage.extraMessage }}</div>
-
-        <!-- "Less" button -->
-        <button v-if="showMore" @click="toggleMore" class="text-blue-500 mb-6">Less</button>
+        <div v-if="showMore" class="text-gray-600 text-base">
+          {{ currentPage.extraMessage }}
+          <button
+            @click="toggleMore"
+            class="text-blue-500 inline ml-2"
+          >
+            Less
+          </button>
+        </div>
       </div>
 
       <!-- Full Card Toggle Button -->
-      <button 
-        @click="toggleFullCard" 
-        class="absolute bottom-6 right-4 bg-gray-100 p-2 rounded-lg shadow text-gray-600 transition-all duration-300 transform hover:bg-gray-200 hover:scale-105"
+      <button
+        @click="toggleFullCard"
+        class="absolute bottom-6 right-4"
         title="Toggle Expand/Collapse"
       >
-        {{ showFullCard ? "Collapse" : "Expand" }}
+        <img
+          :src="showFullCard ? '/up-arrow.png' : '/down-arrow.png'"
+        />
       </button>
 
       <!-- Pagination dots -->
@@ -53,7 +74,10 @@
         <span
           v-for="dot in dots"
           :key="dot"
-          :class="{'bg-gray-600': dot === activePage, 'bg-gray-400': dot !== activePage}"
+          :class="{
+            'bg-gray-600': dot === activePage,
+            'bg-gray-400': dot !== activePage,
+          }"
           class="w-3 h-3 rounded-full cursor-pointer transition-all duration-300 hover:bg-gray-600"
           @click="changePage(dot)"
         ></span>
@@ -61,21 +85,24 @@
     </div>
 
     <!-- Side Icons -->
-    <div v-if="showFullCard" class="icon-container absolute top-8 right-[-4rem] bg-white p-4 rounded-lg shadow-lg">
+    <div
+      v-if="showFullCard"
+      class="icon-container absolute top-8 right-[-4rem] bg-white p-4 rounded-lg shadow-lg"
+    >
       <div class="flex flex-col items-center space-y-4 relative">
         <!-- Link Icon -->
-        <div class="icon-wrapper bg-white p-2 rounded-lg shadow transition-all duration-300 hover:bg-gray-200">
-          <img src="/link.jpg" alt="Link icon" class="w-5 h-5">
+        <div class="icon-wrapper bg-white p-2 rounded-lg shadow">
+          <img src="/link.jpg" alt="Link icon" class="w-5 h-5" title="link"/>
         </div>
 
         <!-- Feedback Icon -->
-        <div class="icon-wrapper bg-white p-2 rounded-lg shadow transition-all duration-300 hover:bg-gray-200">
-          <img src="/feedback.jpg" alt="Feedback icon" class="w-5 h-5">
+        <div class="icon-wrapper bg-white p-2 rounded-lg shadow">
+          <img src="/feedback.jpg" alt="Feedback icon" class="w-5 h-5" title="feedback"/>
         </div>
 
         <!-- Languages Icon and Options -->
         <div
-          class="icon-wrapper bg-white p-2 rounded-lg shadow relative transition-all duration-300 hover:bg-gray-200"
+          class="icon-wrapper bg-white p-2 rounded-lg shadow relative"
           @mouseenter="hoverLanguages = true"
           @mouseleave="hoverLanguages = false"
         >
@@ -83,18 +110,23 @@
           <img
             src="/languages.jpg"
             alt="Languages icon"
-            :class="hoverLanguages ? 'translate-y-[-40px]' : 'translate-y-0'"
             class="w-5 h-5 cursor-pointer transition-transform duration-300"
           />
           <!-- Language Options Dropdown -->
           <transition name="expand-linear">
             <div
               v-if="hoverLanguages"
-              class="language-options absolute left-[-15px] top-[-100px] bg-white shadow-lg rounded-lg p-2 text-gray-700 space-y-1"
+              class="language-options absolute left-[-15px] top-[-130px] bg-white shadow-lg rounded-lg p-2 text-gray-700 space-y-1"
             >
-              <div class="language-option cursor-pointer hover:bg-gray-200 px-2 py-1">EN</div>
-              <div class="language-option cursor-pointer hover:bg-gray-200 px-2 py-1">ES</div>
-              <div class="language-option cursor-pointer hover:bg-gray-200 px-2 py-1">IT</div>
+              <div class="language-option cursor-pointer hover:bg-gray-200 px-2 py-1">
+                EN
+              </div>
+              <div class="language-option cursor-pointer hover:bg-gray-200 px-2 py-1">
+                ES
+              </div>
+              <div class="language-option cursor-pointer hover:bg-gray-200 px-2 py-1">
+                IT
+              </div>
             </div>
           </transition>
         </div>
@@ -102,6 +134,7 @@
     </div>
   </div>
 </template>
+
 
 <script lang="ts">
 import { defineComponent, PropType, ref, computed } from 'vue';
@@ -114,7 +147,7 @@ export default defineComponent({
       required: true,
     },
     dots: {
-      type: Array as PropType<number[]>,
+      type: Array as PropType<number[]> ,
       required: true,
     },
     activeDot: {
@@ -128,6 +161,8 @@ export default defineComponent({
     const showFullCard = ref(false);
     const hoverLanguages = ref(false);
     const headingText = ref<HTMLElement | null>(null);
+
+    const showMoreState = ref<Record<number, boolean>>({ 1: false, 2: false });
 
     const currentPage = computed(() => {
       return activePage.value === 1 ? props.page.body.page1 : props.page.body.page2;
@@ -149,10 +184,15 @@ export default defineComponent({
       showMore.value = !showMore.value;
     };
 
-    const toggleFullCard = () => {
-      showFullCard.value = !showFullCard.value;
-      showMore.value = false;
-    };
+
+
+ const toggleFullCard = () => {
+    showFullCard.value = !showFullCard.value;
+    // Reset all "showMore" states when collapsing the card
+    if (!showFullCard.value) {
+      showMoreState.value = { 1: false, 2: false };
+    }
+  };
 
     const changePage = (page: number) => {
       activePage.value = page;
@@ -191,11 +231,11 @@ export default defineComponent({
   position: relative;
   display: flex;
   align-items: start;
-  max-width: 800px;
+  max-width: 1700px;  /* width when the card expands */
 }
 
 .translation-card {
-  @apply w-full;
+  width: 1700px;
 }
 
 button {
@@ -205,36 +245,16 @@ button {
 .language-options {
   @apply flex flex-col items-center bg-white shadow-lg rounded-lg p-2;
   width: 70px;
-  opacity: 0;
-  transform: translateY(10%);
-  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.icon-wrapper:hover .language-options {
-  opacity: 1;
-  transform: translateY(-10%);
+button img {
+  width: 10px;  /* Set smaller width */
+  height: 7px; /* Set smaller height */
 }
 
-.icon-wrapper img {
-  transition: transform 0.3s ease;
+.copy-btn img{
+  width: 20px;
+  height: 20px;
 }
 
-.icon-wrapper:hover img {
-  transform: translateY(-40px);
-}
-
-.language-option {
-  @apply text-sm cursor-pointer hover:bg-gray-200 px-2 py-1;
-}
-
-.expand-linear-enter-active,
-.expand-linear-leave-active {
-  transition: all 0.2s linear;
-}
-
-.expand-linear-enter-from,
-.expand-linear-leave-to {
-  opacity: 0;
-  transform: translateY(-10%);
-}
 </style>

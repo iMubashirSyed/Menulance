@@ -1,53 +1,54 @@
-@import './assets/tailwind.css';
-
 .translation-card {
-    @apply bg-white p-6 shadow-md rounded-lg transition-all duration-300;
-    width: 100%; /* Ensure card takes the full width of the container */
+    @apply bg-white p-6 shadow-md rounded-sm transition-all duration-300;
+    width: 1700px; /* Increased width to double the original size */
     overflow: hidden; /* Prevent content overflow for collapsed cards */
-    
+  }
+  
+  .translation-card.collapsed {
+    height: 100px; /* Fixed height for collapsed state */
+    text-align: center; 
 }
-
-.translation-card.collapsed {
-    height: 150px; /* Fixed height for collapsed state */
-}
-
-.translation-card.expanded {
+  
+  .translation-card.expanded {
     max-height: none; /* Let the height adjust dynamically */
     overflow: visible; /* Allow content to flow naturally */
-}
-
-.card-wrapper {
+  }
+  
+  .card-wrapper {
     @apply relative flex justify-center items-start;
     width: 100%;
     max-width: 1400px;
   }
-
-.icon-container {
+  
+  button img {
+    width: 3px; /* Smaller width for arrow icons */
+    height: 3px; /* Smaller height for arrow icons */
+  }
+  
+  button {
+    @apply p-0 border-none bg-transparent; /* Removed background and padding */
+  }
+  
+  .icon-container {
     @apply absolute bg-white shadow-lg p-4 rounded-lg;
     top: 16px;
     right: -80px;
     z-index: 10;
-}
-
-.icon-wrapper {
+  }
+  
+  .icon-wrapper {
     @apply flex items-center justify-center p-2 rounded-lg shadow;
     width: 40px;
     height: 40px;
-}
-
-/* Language options dropdown styling */
-.language-options {
-    @apply flex flex-col items-center bg-white rounded-lg shadow-lg p-2;
-    width: 70px;
-}
-
-.expand-linear-enter-active,
-.expand-linear-leave-active {
+  }
+  
+  .expand-linear-enter-active,
+  .expand-linear-leave-active {
     transition: all 0.2s linear;
-}
-
-.expand-linear-enter-from,
-.expand-linear-leave-to {
+  }
+  
+  .expand-linear-enter-from,
+  .expand-linear-leave-to {
     opacity: 0;
-    transform: translateY(-10%);
-}
+  }
+  
