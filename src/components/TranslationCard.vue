@@ -7,7 +7,7 @@
         <h1
           ref="headingText"
           class="inline text-2xl"
-          :class="showFullCard ? 'font-semibold' : 'font-normal'"
+          :class="showFullCard ? 'font-semibold' : ' font-normal text-gray-400' "
         >
           <span v-html="highlightedHeading"></span>
         </h1>
@@ -21,14 +21,13 @@
         </button>
       </div>
 
-
       <!-- Expandable Content -->
       <div v-if="showFullCard">
         <!-- Meaning Section -->
-        <h2 class="text-lg font-medium text-gray-700 mb-2">
-          {{ currentPage.meaning }} meaning
+        <h2 class="text-lg font-medium text-gray-400 mb-2">
+          <span class="text-black">{{ currentPage.meaning }}</span> meaning
         </h2>
-        <ul class="text-gray-600 text-base space-y-2 mb-6">
+        <ul class="text-gray-400 space-y-2 mb-6">
           <li
             v-for="(desc, index) in getDescriptions(currentPage.description)"
             :key="index"
@@ -47,14 +46,9 @@
         </ul>
 
         <!-- Extra Message -->
-        <div v-if="showMore" class="text-gray-600 text-base">
+        <div v-if="showMore" class="text-gray-400 text-base">
           {{ currentPage.extraMessage }}
-          <button
-            @click="toggleMore"
-            class="text-blue-500 inline ml-2"
-          >
-            Less
-          </button>
+          <button @click="toggleMore" class="text-blue-500 inline ml-2">Less</button>
         </div>
       </div>
 
@@ -64,12 +58,10 @@
         class="absolute bottom-6 right-4"
         title="Toggle Expand/Collapse"
       >
-        <img
-          :src="showFullCard ? '/up-arrow.png' : '/down-arrow.png'"
-        />
+        <img :src="showFullCard ? '/up-arrow.png' : '/down-arrow.png'" />
       </button>
 
-      <!-- Pagination dots -->
+      <!-- Pagination Dots -->
       <div v-if="showFullCard" class="flex justify-center space-x-2 mt-4">
         <span
           v-for="dot in dots"
@@ -78,7 +70,7 @@
             'bg-gray-600': dot === activePage,
             'bg-gray-400': dot !== activePage,
           }"
-          class="w-3 h-3 rounded-full cursor-pointer transition-all duration-300 hover:bg-gray-600"
+          class="w-2 h-2 rounded-full cursor-pointer transition-all duration-300 hover:bg-gray-600"
           @click="changePage(dot)"
         ></span>
       </div>
@@ -87,22 +79,20 @@
     <!-- Side Icons -->
     <div
       v-if="showFullCard"
-      class="icon-container absolute top-8 right-[-4rem] bg-white p-4 rounded-lg shadow-lg"
+      class="icon-container w-13"
     >
-      <div class="flex flex-col items-center space-y-4 relative">
+      <div class="flex flex-col items-center space-y-4">
         <!-- Link Icon -->
-        <div class="icon-wrapper bg-white p-2 rounded-lg shadow">
-          <img src="/link.jpg" alt="Link icon" class="w-5 h-5" title="link"/>
+        <div class="icon-wrapper bg-white">
+          <img src="/link.jpg" alt="Link icon" class="w-3 h-3" title="link" />
         </div>
-
         <!-- Feedback Icon -->
-        <div class="icon-wrapper bg-white p-2 rounded-lg shadow">
-          <img src="/feedback.jpg" alt="Feedback icon" class="w-5 h-5" title="feedback"/>
+        <div class="icon-wrapper bg-white">
+          <img src="/feedback.jpg" alt="Feedback icon" class="w-3 h-3" title="feedback" />
         </div>
-
         <!-- Languages Icon and Options -->
         <div
-          class="icon-wrapper bg-white p-2 rounded-lg shadow relative"
+          class="icon-wrapper bg-white"
           @mouseenter="hoverLanguages = true"
           @mouseleave="hoverLanguages = false"
         >
@@ -110,23 +100,17 @@
           <img
             src="/languages.jpg"
             alt="Languages icon"
-            class="w-5 h-5 cursor-pointer transition-transform duration-300"
+            class="w-3 h-3 cursor-pointer transition-transform duration-300"
           />
           <!-- Language Options Dropdown -->
           <transition name="expand-linear">
             <div
               v-if="hoverLanguages"
-              class="language-options absolute left-[-15px] top-[-130px] bg-white shadow-lg rounded-lg p-2 text-gray-700 space-y-1"
+              class="language-options absolute left-[3px] top-[0px] bg-white shadow-lg rounded-lg p-2 text-gray-700 space-y-1"
             >
-              <div class="language-option cursor-pointer hover:bg-gray-200 px-2 py-1">
-                EN
-              </div>
-              <div class="language-option cursor-pointer hover:bg-gray-200 px-2 py-1">
-                ES
-              </div>
-              <div class="language-option cursor-pointer hover:bg-gray-200 px-2 py-1">
-                IT
-              </div>
+              <div class="language-option cursor-pointer hover:bg-gray-200 px-2 py-1">EN</div>
+              <div class="language-option cursor-pointer hover:bg-gray-200 px-2 py-1">ES</div>
+              <div class="language-option cursor-pointer hover:bg-gray-200 px-2 py-1">IT</div>
             </div>
           </transition>
         </div>
@@ -137,7 +121,7 @@
 
 
 <script lang="ts">
-import { defineComponent, PropType, ref, computed } from 'vue';
+import { defineComponent, ref, computed, PropType } from 'vue';
 import { arrType } from './CardData';
 
 export default defineComponent({
@@ -147,7 +131,7 @@ export default defineComponent({
       required: true,
     },
     dots: {
-      type: Array as PropType<number[]> ,
+      type: Array as PropType<number[]>,
       required: true,
     },
     activeDot: {
@@ -162,19 +146,28 @@ export default defineComponent({
     const hoverLanguages = ref(false);
     const headingText = ref<HTMLElement | null>(null);
 
-    const showMoreState = ref<Record<number, boolean>>({ 1: false, 2: false });
-
     const currentPage = computed(() => {
       return activePage.value === 1 ? props.page.body.page1 : props.page.body.page2;
     });
 
-    const highlightedHeading = computed(() => {
-      const meaning = currentPage.value.meaning;
-      const heading = props.page.heading;
-      return showFullCard.value
-        ? heading.replace(meaning, `<span class="font-bold">${meaning}</span>`)
-        : heading;
-    });
+  const highlightedHeading = computed(() => {
+  const meaning = currentPage.value.meaning;
+  const heading = props.page.heading;
+
+  if (showFullCard.value) {
+    // When the card is expanded, only highlight the 'meaning' part in black
+    return heading.split(meaning).map((part, index, array) => {
+      if (index < array.length - 1) {
+        return `<span class="text-gray-400">${part}</span><span class="text-black ">${meaning}</span>`;
+      }
+      return `<span class="text-gray-400">${part}</span>`;
+    }).join('');
+  } else {
+    // When the card is collapsed, the whole heading is in gray
+    return `<span class="text-gray-400">${heading}</span>`;
+  }
+});
+
 
     const getDescriptions = (descriptions: string[]) => {
       return showMore.value ? descriptions : descriptions.slice(0, 2);
@@ -184,15 +177,10 @@ export default defineComponent({
       showMore.value = !showMore.value;
     };
 
-
-
- const toggleFullCard = () => {
-    showFullCard.value = !showFullCard.value;
-    // Reset all "showMore" states when collapsing the card
-    if (!showFullCard.value) {
-      showMoreState.value = { 1: false, 2: false };
-    }
-  };
+    const toggleFullCard = () => {
+      showFullCard.value = !showFullCard.value;
+      showMore.value = false;
+    };
 
     const changePage = (page: number) => {
       activePage.value = page;
@@ -232,10 +220,12 @@ export default defineComponent({
   display: flex;
   align-items: start;
   max-width: 1700px;  /* width when the card expands */
+  /* padding: 20px; */
 }
 
 .translation-card {
   width: 1700px;
+  padding: 30px;
 }
 
 button {
@@ -244,7 +234,7 @@ button {
 
 .language-options {
   @apply flex flex-col items-center bg-white shadow-lg rounded-lg p-2;
-  width: 70px;
+  width: 50px;
 }
 
 button img {
@@ -257,4 +247,7 @@ button img {
   height: 20px;
 }
 
+.icon-wrapper img{
+  width: 15px;
+}
 </style>
