@@ -1,19 +1,19 @@
 .translation-card {
-    @apply bg-white p-8  rounded-sm transition-all duration-300;
-    width: 1700px; /* Increased width to double the original size */
-    overflow: hidden; /* Prevent content overflow for collapsed cards */
-  }
-  
-  .translation-card.collapsed {
-    height: 100px; /* Fixed height for collapsed state */
-    text-align: center; 
+  @apply bg-white p-8 rounded-sm transition-all duration-300;
+  width: 1700px;
+  overflow: hidden;
+  // height: 100px; /* Default height for collapsed state */
+  transition: height 0.4s ease-in-out; /* Smooth transition */
 }
-  
-  .translation-card.expanded {
-    max-height: none; /* Let the height adjust dynamically */
-    overflow: visible; /* Allow content to flow naturally */
-  }
-  
+
+.translation-card.collapsed {
+  height: 100px; /* Fixed collapsed height */
+}
+
+.translation-card.expanded {
+  /* Remove height:auto; JavaScript dynamically sets the height */
+}
+
   .card-wrapper {
     @apply relative flex justify-center items-start;
     width: 100%;

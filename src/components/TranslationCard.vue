@@ -1,7 +1,7 @@
 <template>
   <div class="card-wrapper relative mx-auto">
     <!-- Translation Card -->
-    <div :class="['translation-card', showFullCard ? 'expanded' : 'collapsed']">
+    <div :class="['translation-card ', showFullCard ? 'expanded' : 'collapsed']">
       <!-- Heading with Copy to Clipboard -->
       <div class="heading-container flex justify-center items-center relative mb-4">
         <h1
@@ -177,10 +177,31 @@ export default defineComponent({
       showMore.value = !showMore.value;
     };
 
-    const toggleFullCard = () => {
-      showFullCard.value = !showFullCard.value;
-      showMore.value = false;
-    };
+    const toggleFullCard = (event: Event) => {
+  const button = event.currentTarget as HTMLElement;
+  const card = button.closest('.translation-card') as HTMLElement; // Find the specific card
+  if (!card) return;
+
+  if (!showFullCard.value) {
+    // Expanding: Immediately set height to 'auto' without animation
+    card.style.height = 'auto';
+    card.classList.remove('collapsed');
+    card.classList.add('expanded');
+  } else {
+    // Collapsing: Add smooth transition
+    const currentHeight = card.offsetHeight; // Get current height
+    card.style.height = `${currentHeight}px`; // Set current height
+    requestAnimationFrame(() => {
+      card.style.height = '100px'; // Collapse to fixed height
+    });
+    card.classList.remove('expanded');
+    card.classList.add('collapsed');
+  }
+
+  // Toggle state
+  showFullCard.value = !showFullCard.value;
+};
+
 
     const changePage = (page: number) => {
       activePage.value = page;
@@ -226,6 +247,7 @@ export default defineComponent({
 .translation-card {
   width: 1700px;
   padding: 30px;
+
 }
 
 button {
