@@ -9,6 +9,16 @@
     <!-- Cards Section -->
     <TranslationCardList />
   </div>
+
+  <div class="bg-black min-h-screen flex flex-col items-center justify-start p-4">
+
+  <div class="text-center text-gray-300 flex flex-col items-center mb-12">
+  <img src="/taco-tasty.png" alt="English" class="w-12 h-12 mb-4" />
+      <h1 class="text-3xl font-bold ">Spanish</h1>
+  </div>
+    <TranslationCardList />
+  </div>
+
 </template>
 
 <script lang="ts">
@@ -31,4 +41,5 @@ body {
 img {
   object-fit: contain;
 }
+
 </style>

@@ -10,9 +10,9 @@
   height: 100px; /* Fixed collapsed height */
 }
 
-.translation-card.expanded {
-  /* Remove height:auto; JavaScript dynamically sets the height */
-}
+// .translation-card.expanded {
+//   height: auto;  /* Remove height:auto; JavaScript dynamically sets the height */
+// }
 
   .card-wrapper {
     @apply relative flex justify-center items-start;
@@ -38,13 +38,50 @@
     height: 25px;
   }
   
+  .fade-toggle-enter-active,
+  .fade-toggle-leave-active {
+    transition: opacity 0.1s ease, transform 0.1s ease;
+    overflow: hidden;
+
+  }
+
+  .fade-toggle-enter-from,
+  .fade-toggle-leave-to {
+    opacity: 0;
+    transform: scale(0.1s);
+    overflow: hidden;
+
+  }
+
   .expand-linear-enter-active,
   .expand-linear-leave-active {
     transition: all 0.2s linear;
+    overflow: hidden;
+
   }
-  
+
   .expand-linear-enter-from,
   .expand-linear-leave-to {
     opacity: 0;
+    overflow: hidden;
+
+  }
+
+  .fade-page-enter {
+    opacity: 0;
+    transform: translateY(-100%);
+    overflow: hidden;
+  }
+  
+  .fade-page-leave-to {
+    opacity: 0;
+    transform: translateY(100%);
+    overflow: hidden;
+  }
+  
+  .fade-slide-enter-active,
+  .fade-slide-leave-active {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    overflow: hidden;
   }
   
