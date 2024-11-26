@@ -2,24 +2,23 @@
   <div class="card-wrapper relative mx-auto">
     <!-- Translation Card -->
     <div :class="['translation-card', showFullCard ? 'expanded' : 'collapsed']">
-      <!-- Heading with Copy to Clipboard -->
-      <div class="heading-container inline relative mb-2">
-        <h1
-          ref="headingText"
-          class="inline text-2xl flex items-center"
-          :class="showFullCard ? 'font-semibold' : 'font-normal text-gray-400'"
-        >
-          <span class="text-gray-400 text-center" v-html="highlightedHeading"></span>
-          <span
-            v-if="showFullCard"
-            @click="copyToClipboard(headingText)"
-            class="copy-btn ml-2 p-1 rounded shadow text-sm transition"
-            title="Copy to clipboard"
-          >
-            <img src="/copy-document.png" alt="Copy to clipboard" class="copy-icon" />
-        </span>
-        </h1>
-      </div>
+  <!-- Heading with Copy to Clipboard -->
+  <div class="heading-container flex items-center mb-2 text-center">
+    <h1
+      ref="headingText"
+      class="text-2xl font-semibold "
+      :class="showFullCard ? 'font-semibold' : 'font-normal text-gray-400'"
+    >
+      <span class="text-gray-400 text-center" v-html="highlightedHeading"></span>
+      <button v-if="showFullCard"
+        @click="copyToClipboard(headingText)"
+        class="copy-btn  ml-2 p-1 rounded shadow text-sm transition"
+        title="Copy to clipboard" >
+        <img src="/copy-document.png" alt="Copy to clipboard" class="copy-icon" />
+      
+    </button>
+    </h1>
+  </div>
 
       <!-- Expandable Content with Smooth Transitions -->
       <transition name="expand-fade" @before-enter="beforeEnter" @after-enter="afterEnter">
@@ -53,7 +52,7 @@
       </transition>
                 
       <!-- Extra Message -->
-      <transition name="fade-toggle">
+      
         <div
           v-if="showMore"
           class="extra-message text-gray-400 text-base"
@@ -62,7 +61,6 @@
           {{ currentPage.extraMessage }}
           <button @click="toggleMore" class="text-blue-500 inline ml-2">Less</button>
         </div>
-      </transition>
 
       <!-- Full Card Toggle Button -->
       <button
@@ -91,40 +89,46 @@
     </div>
 
     <!-- Side Icons -->
-    <div v-if="showFullCard" class="icon-container w-13">
-      <div class="flex flex-col items-center space-y-4">
+    <div v-if="showFullCard" class="icon-container ">
+      <div class="container flex flex-col items-center relative overflow-hidden h-full gap-1 justify-between">
         <!-- Link Icon -->
         <div class="icon-wrapper bg-white">
-          <img src="/link.jpg" alt="Link icon" class="w-3 h-3" title="link" />
+          <img src="/link.jpg" alt="Link icon" class="w-4 h-4" title="link" />
         </div>
         <!-- Feedback Icon -->
         <div class="icon-wrapper bg-white">
-          <img src="/feedback.jpg" alt="Feedback icon" class="w-3 h-3" title="feedback" />
+          <img src="/feedback.jpg" alt="Feedback icon" class="w-4 h-4" title="feedback" />
         </div>
         <!-- Languages Icon and Options -->
-        <div
+        <!-- <div
           class="icon-wrapper bg-white"
           @mouseenter="hoverLanguages = true"
           @mouseleave="hoverLanguages = false"
-        >
+        > -->
           <!-- Languages Icon -->
+           <div class="translationLanguageSelector bg-[#F3F3F3] mt-0 rounded-lg flex flex-col justify-center items-center rounded overflow-hidden">
           <img
             src="/languages.jpg"
             alt="Languages icon"
-            class="w-3 h-3 cursor-pointer transition-transform duration-300"
+            class="w-5 h-4 bg-[#F3F3F3] cursor-pointer mt-4px"
           />
+          <span class="text-sm text-gray-950 mt-2">EN</span>
+          <span class="language-option text-sm text-gray-950 mt-2 hidden">ES</span>
+          <span class="language-option text-sm text-gray-950 mt-2 hidden">IT</span>
+        </div>
           <!-- Language Options Dropdown -->
-          <transition name="expand-linear">
+
+         <!-- <transition name="expand-linear">
             <div
               v-if="hoverLanguages"
-              class="language-options absolute left-[3px] top-[0px] bg-white shadow-lg rounded-lg p-2 text-gray-700 space-y-1"
+              class="language-options absolute left-[px] top-[0px] bg-white shadow-lg rounded-lg p-2 text-gray-700 space-y-1"
             >
               <div class="language-option cursor-pointer hover:bg-gray-200 px-2 py-1">EN</div>
               <div class="language-option cursor-pointer hover:bg-gray-200 px-2 py-1">ES</div>
               <div class="language-option cursor-pointer hover:bg-gray-200 px-2 py-1">IT</div>
             </div>
-          </transition>
-        </div>
+          </transition> -->
+        <!-- </div> -->
       </div>
     </div>
   </div>
@@ -272,18 +276,23 @@ const afterEnter = (el: Element): void => {
 </script>
 <style scoped>
 .card-wrapper {
+
   position: relative;
-  /* display: flex; */
-  /* flex-wrap: wrap; Allow wrapping for smaller screens */
+  /*display: flex; */
+  /* flex-wrap: wrap;  */
   /* justify-content: space-between; Even spacing between cards */
   /* align-items: start; */
   max-width: 950px;  /* width when the card expands */
+  /* padding: 20px; */
+  display: flex;
+  flex-direction: column;
+  margin: auto;
   /* padding: 20px; */
 }
 
 .translation-card {
   /* @apply bg-white rounded-sm shadow-lg transition-all duration-300 ease-in-out; */
-    max-width: 950px; /* Expanded width */
+    max-width: 100%; /* Expanded width */
     padding: 30px;
     position: relative;
     background-color: white;
@@ -313,12 +322,10 @@ button {
   outline: none;
 }
 
-
-.language-options {
-  @apply flex flex-col items-center bg-white shadow-lg rounded-lg p-2;
-  width: 50px;
+/* .language-option {
+  @apply  bg-white p-2;
   transition: height 0.5s linear;
-}
+} */
 
 button img {
   width: 10px;  /* Set smaller width */
@@ -331,39 +338,41 @@ button img {
 }
 
 .icon-wrapper img{
-  width: 15px;
+  width: 23px;
 }
-
-.page-transition-enter-active,
-.page-transition-leave-active {
-  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-}
-/* .page-transition-enter {
-  opacity: 0;
-  transform: translateX(20px);
-}
-
-.page-transition-leave-to {
-  opacity: 0;
-  transform: translateX(-20px);
-} */
 
 .fade-page-enter-active,
 .fade-page-leave-active {
-  transition: opacity 0.5s ease;
+  transition: opacity 0.4s ease;
 }
 
 .fade-page-enter, .fade-page-leave-to {
   opacity: 0;
 }
 
-.fade-toggle-enter-active,
-.fade-toggle-leave-active {
-  transition: all 0.5s ease;
-}
-
 .expand-fade {
   transition: all 1s ease;
   overflow: hidden;
 }
+
+.translationLanguageSelector:hover{
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    transition: all 0.5s ease-in-out;
+}
+
+.language-option {
+  display: none;
+}
+
+.translationLanguageSelector:hover .language-option {
+  display: block;
+  transition: height 0.5s ease-in-out;
+}
+
+/* 
+.container:hover{
+  transition: all 0.5s ease-in-out;
+} */
 </style>

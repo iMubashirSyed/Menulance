@@ -27,17 +27,25 @@
   }
   
   .icon-container {
-    @apply absolute bg-white  p-4 rounded-r-xl;
-    top: 0px;
-    right: -60px;
+    position: absolute;
+    top: 0;
+    right: 0; /* Aligns the toolbar to the right edge of the card */
+    transform: translateX(105%); /* Ensures it appears beside the card without overflowing */
     z-index: 10;
+    padding: 4px;
+    background-color: white;
+    border-radius: 0 5px 5px 0;
+    height: 150px;
   }
   
-  .icon-wrapper { /* side icon width and height */
-    @apply flex items-center justify-center;
-    width: 25px;
-    height: 25px;
+  .icon-wrapper {
+    display: flex;
+    align-items: center;
+    // justify-center;
+    width: 30px;
+    height: 30px;
   }
+  
   
   .fade-toggle-enter-active,
   .fade-toggle-leave-active {

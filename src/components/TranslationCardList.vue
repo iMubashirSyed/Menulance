@@ -17,7 +17,7 @@
       class="more-results-section cursor-pointer"
       @click="showMoreCards"
     >
-      <button class="more-results-btn">
+      <button class="more-results-btn w-full">
         ▼ More Results
       </button>
     </div>
@@ -82,5 +82,6 @@ export default defineComponent({
   font-weight: bold;
   cursor: pointer;
   pointer-events: none; /* Prevent this button from intercepting clicks */
+  height: 44px;
 }
 </style>
