@@ -17,9 +17,7 @@
       class="more-results-section cursor-pointer"
       @click="showMoreCards"
     >
-      <button class="more-results-btn w-full">
-        ▼ More Results
-      </button>
+      <button class="more-results-btn w-full">▼ More Results</button>
     </div>
   </div>
 </template>
