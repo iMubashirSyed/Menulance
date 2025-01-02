@@ -15,82 +15,86 @@
 //   max-width: 1200px;
 // }
 
-  // .card-wrapper {
-  //   @apply relative flex justify-center items-center;
-  //   // max-width: 100%;
-  //   // max-width: 1400px;
-  // }
-  
-  button img {
-    width: 3px; /* Smaller width for arrow icons */
-    height: 3px; /* Smaller height for arrow icons */
-  }
-  
-  .icon-container {
-    position: absolute;
-    top: 0;
-    right: 0; /* Aligns the toolbar to the right edge of the card */
-    transform: translateX(105%); /* Ensures it appears beside the card without overflowing */
-    z-index: 10;
-    padding: 4px;
-    background-color: white;
-    border-radius: 0 5px 5px 0;
-    height: 150px;
-  }
-  
-  .icon-wrapper {
-    display: flex;
-    align-items: center;
-    // justify-center;
-    width: 30px;
-    height: 30px;
-  }
-  
-  
-  .fade-toggle-enter-active,
-  .fade-toggle-leave-active {
-    transition: opacity 0.1s ease, transform 0.1s ease;
-    overflow: hidden;
+// .card-wrapper {
+//   @apply relative flex justify-center items-center;
+//   // max-width: 100%;
+//   // max-width: 1400px;
+// }
 
-  }
+button img {
+  width: 3px;
+  /* Smaller width for arrow icons */
+  height: 3px;
+  /* Smaller height for arrow icons */
+}
 
-  .fade-toggle-enter-from,
-  .fade-toggle-leave-to {
-    opacity: 0;
-    transform: scale(0.1s);
-    overflow: hidden;
+.icon-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* Aligns the toolbar to the right edge of the card */
+  transform: translateX(105%);
+  /* Ensures it appears beside the card without overflowing */
+  z-index: 10;
+  padding: 4px;
+  background-color: white;
+  border-radius: 0 5px 5px 0;
+  height: 112px;
+  width: 35px;
+}
 
-  }
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  // justify-center;
+  width: 30px;
+  height: 30px;
+}
 
-  .expand-linear-enter-active,
-  .expand-linear-leave-active {
-    transition: all 0.2s linear;
-    overflow: hidden;
 
-  }
+.fade-toggle-enter-active,
+.fade-toggle-leave-active {
+  transition: opacity 0.1s ease, transform 0.1s ease;
+  overflow: hidden;
 
-  .expand-linear-enter-from,
-  .expand-linear-leave-to {
-    opacity: 0;
-    overflow: hidden;
+}
 
-  }
+.fade-toggle-enter-from,
+.fade-toggle-leave-to {
+  opacity: 0;
+  transform: scale(0.1s);
+  overflow: hidden;
 
-  // .fade-page-enter {
-  //   opacity: 0;
-  //   transform: translateY(-100%);
-  //   overflow: hidden;
-  // }
-  
-  // .fade-page-leave-to {
-  //   opacity: 0;
-  //   transform: translateY(100%);
-  //   overflow: hidden;
-  // }
-  
-  // .fade-slide-enter-active,
-  // .fade-slide-leave-active {
-  //   transition: opacity 0.5s ease, transform 0.5s ease;
-  //   overflow: hidden;
-  // }
-  
+}
+
+.expand-linear-enter-active,
+.expand-linear-leave-active {
+  transition: all 0.2s linear;
+  overflow: hidden;
+
+}
+
+.expand-linear-enter-from,
+.expand-linear-leave-to {
+  opacity: 0;
+  overflow: hidden;
+
+}
+
+// .fade-page-enter {
+//   opacity: 0;
+//   transform: translateY(-100%);
+//   overflow: hidden;
+// }
+
+// .fade-page-leave-to {
+//   opacity: 0;
+//   transform: translateY(100%);
+//   overflow: hidden;
+// }
+
+// .fade-slide-enter-active,
+// .fade-slide-leave-active {
+//   transition: opacity 0.5s ease, transform 0.5s ease;
+//   overflow: hidden;
+// }

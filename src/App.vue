@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="bg-black min-h-screen flex flex-col items-center justify-start p-4"
-  >
+  <div class="bg-black min-h-screen flex flex-col items-center justify-start">
     <!-- English Egg Image and Text -->
     <div class="text-center text-gray-300 flex flex-col items-center mb-12">
       <img src="/english-egg.png" alt="English" class="w-12 h-12 mb-4" />

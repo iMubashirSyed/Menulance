@@ -1,7 +1,7 @@
 <template>
-  <div class="card-list-wrapper mx-auto p-6 rounded-md shadow-lg space-y-6">
+  <div class="card-list-wrapper rounded-md shadow-lg w-full">
     <!-- Cards List -->
-    <div class="flex flex-col space-y-6">
+    <div class="flex flex-col w-full items-center gap-2">
       <TranslationCard
         v-for="(card, index) in displayedCards"
         :key="index"
@@ -9,17 +9,19 @@
         :dots="[1, 2]"
         :activeDot="activeDot"
       />
-    </div>
 
-    <!-- "More Results" Section -->
-    <div
-      v-if="!showAllCards"
-      class="more-results-section cursor-pointer"
-      @click="showMoreCards"
-    >
-      <button class="more-results-btn w-full">▼ More Results</button>
+<!-- "More Results" Section -->
+<div
+  v-if="!showAllCards"
+  class="more-results-section cursor-pointer w-[70%]"
+  @click="showMoreCards"
+>
+  <button class="more-results-btn w-full">
+    ▼ More Results
+  </button>
+</div>
+</div>
     </div>
-  </div>
 </template>
 
 <script lang="ts">
