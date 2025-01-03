@@ -2,92 +2,103 @@
   <div class="card-wrapper relative w-[70%]">
     <!-- Translation Card -->
     <div :class="['translation-card', showFullCard ? 'expanded' : 'collapsed']">
-  <!-- Heading with Copy to Clipboard -->
-  <div class="flex items-center mb-2 text-center">
-    <h1
-      ref="headingText"
-      class="text-2xl font-semibold "
-      :class="showFullCard ? 'font-semibold' : 'font-normal text-gray-400'"
-    >
-      <span class="text-gray-400 text-center" v-html="highlightedHeading"></span>
-      <button :class="{'opacity-100': showFullCard, 'opacity-0': !showFullCard}" 
-        @click="copyToClipboard(headingText)"
-        class="copy-btn  ml-2 p-1 rounded shadow text-sm transition"
-        title="Copy to clipboard" >
-        <img src="/copy-document.png" alt="Copy to clipboard" class="copy-icon" />
-      
-    </button>
-    </h1>
-  </div>
-
-      <div class="overflow-hidden transition-all duration-500 ease-in-out" 
-     :class="{'max-h-0' : !showFullCard, 'max-h-[auto]' : showFullCard}"> 
-  <!-- Meaning Section -->
-  <transition name="fade-page" mode="out-in">
-  <div :key="activePage">
-    <h2 class="text-lg font-medium text-gray-400 mb-2">
-      <span class="text-black">{{ currentPage.meaning }}</span> meaning
-    </h2>
-    <ul class="text-gray-400 space-y-2 mb-6">
-      <li
-        v-for="(desc, index) in getDescriptions(currentPage.description)"
-        :key="index"
-      >
-        {{ index + 1 }}.
-        <span v-if="index === 1">
-          {{ desc.substring(0, desc.length / 2) }}<span>... </span>
-          <button
-            :class="{'opacity-0': showMore, 'opacity-100': !showMore}"
-            @click="toggleMore"
-            class="text-blue-500 transition-opacity duration-500 ease-in-out"
-          >
-            More
-          </button>
-          <!-- Second half of the description (hidden until "More" is clicked) -->
+      <!-- Heading with Copy to Clipboard -->
+      <div class="flex items-center mb-2 text-center">
+        <h1
+          ref="headingText"
+          class="text-2xl font-light"
+          :class="showFullCard ? 'font-semibold' : 'font-normal text-gray-400'"
+        >
           <span
-            :class="{'opacity-0': !showMore, 'opacity-100': showMore}"
-            class="transition-opacity duration-500 ease-in-out overflow-hidden"
+            class="text-gray-400 text-center hover:text-black cursor-pointer"
+            v-html="highlightedHeading"
+          ></span>
+          <button
+            :class="{ 'opacity-100': showFullCard, 'opacity-0': !showFullCard }"
+            @click="copyToClipboard(headingText)"
+            class="copy-btn ml-2 p-1 rounded shadow text-sm transition"
+            title="Copy to clipboard"
           >
-            {{ desc.substring(desc.length / 2) }}
-          </span>
-        </span>
-        <span v-else>{{ desc }}</span>
-      </li>
-    </ul>
-  </div>
-</transition>
-
-<!-- Extra Message -->
-<div
-  :class="{'opacity-0 ': !showMore, 'opacity-100 ': showMore}"
-  class="extra-message text-gray-400 text-base transition-opacity duration-500 ease-in-out overflow-hidden"
->
-  {{ currentPage.extraMessage }}
-  <button
-    v-if="showMore"
-    @click="toggleMore"
-    class="text-blue-500 mt-2"
-  >
-    Less
-  </button>
-</div>
-
-      <!-- Pagination Dots -->
-      <div class="flex justify-center space-x-2 mt-4 cursor-pointer">
-        <span
-          v-for="dot in dots"
-          :key="dot"
-          :class="{
-            'bg-gray-600': dot === activePage,
-            'bg-gray-400': dot !== activePage,
-          }"
-          class="w-2 h-2 rounded-full cursor-pointer  hover:bg-gray-600"
-          @click="changePage(dot)"
-        ></span>
+            <img
+              src="/copy-document.png"
+              alt="Copy to clipboard"
+              class="copy-icon"
+            />
+          </button>
+        </h1>
       </div>
+
+      <div
+        class="overflow-hidden transition-all duration-500 ease-in-out"
+        :class="{ 'max-h-0': !showFullCard, 'max-h-[auto]': showFullCard }"
+      >
+        <!-- Meaning Section -->
+        <transition name="fade-page" mode="out-in">
+          <div :key="activePage">
+            <h2 class="text-lg font-medium text-gray-400 mb-2">
+              <span class="text-black">{{ currentPage.meaning }}</span> meaning
+            </h2>
+            <ul class="text-gray-400 space-y-2 mb-6">
+              <li
+                v-for="(desc, index) in getDescriptions(
+                  currentPage.description
+                )"
+                :key="index"
+              >
+                {{ index + 1 }}.
+                <span v-if="index === 1">
+                  {{ desc.substring(0, desc.length / 2) }}<span>... </span>
+                  <button
+                    :class="{ 'opacity-0': showMore, 'opacity-100': !showMore }"
+                    @click="toggleMore"
+                    class="text-blue-500 transition-opacity duration-500 ease-in-out"
+                  >
+                    More
+                  </button>
+                  <!-- Second half of the description (hidden until "More" is clicked) -->
+                  <span
+                    :class="{ 'opacity-0': !showMore, 'opacity-100': showMore }"
+                    class="transition-opacity duration-500 ease-in-out overflow-hidden"
+                  >
+                    {{ desc.substring(desc.length / 2) }}
+                  </span>
+                </span>
+                <span v-else>{{ desc }}</span>
+              </li>
+            </ul>
+          </div>
+        </transition>
+
+        <!-- Extra Message -->
+        <div
+          :class="{ 'opacity-0 ': !showMore, 'opacity-100 ': showMore }"
+          class="extra-message text-gray-400 text-base transition-opacity duration-500 ease-in-out overflow-hidden"
+        >
+          {{ currentPage.extraMessage }}
+          <button
+            v-if="showMore"
+            @click="toggleMore"
+            class="text-blue-500 mt-2"
+          >
+            Less
+          </button>
         </div>
+
+        <!-- Pagination Dots -->
+        <div class="flex justify-center space-x-2 mt-4 cursor-pointer">
+          <span
+            v-for="dot in dots"
+            :key="dot"
+            :class="{
+              'bg-gray-600': dot === activePage,
+              'bg-gray-400': dot !== activePage,
+            }"
+            class="w-2 h-2 rounded-full cursor-pointer hover:bg-gray-600"
+            @click="changePage(dot)"
+          ></span>
+        </div>
+      </div>
       <!-- </transition> -->
-      
 
       <!-- Full Card Toggle Button -->
       <button
@@ -100,14 +111,23 @@
     </div>
 
     <!-- Side Icons -->
-    <div :class="{'opacity-100': showFullCard, 'opacity-0': !showFullCard}" 
-    class="icon-container transition-opacity duration-500 ease-in-out">
+    <div
+      :class="{ 'opacity-100': showFullCard, 'opacity-0': !showFullCard }"
+      class="icon-container transition-opacity duration-500 ease-in-out"
+    >
       <div class="container flex flex-col items-center h-full gap-3">
         <!-- Link Icon -->
-          <img src="/link.jpg" alt="Link icon" class="w-4 " title="link" />
-          <img src="/feedback.jpg" alt="Feedback icon" class="w-4" title="feedback" />
-          <!-- Languages Icon -->
-           <div class="translationLanguageSelector bg-[#F3F3F3] mt-0 rounded-3xl flex flex-col justify-start items-center rounded overflow-hidden">
+        <img src="/link.jpg" alt="Link icon" class="w-4" title="link" />
+        <img
+          src="/feedback.jpg"
+          alt="Feedback icon"
+          class="w-4"
+          title="feedback"
+        />
+        <!-- Languages Icon -->
+        <div
+          class="translationLanguageSelector bg-[#F3F3F3] mt-0 rounded-3xl flex flex-col justify-start items-center rounded overflow-hidden"
+        >
           <img
             src="/languages.jpg"
             alt="Languages icon"
@@ -212,16 +232,16 @@ export default defineComponent({
 
     // Correctly typed methods for lifecycle hooks
     const beforeEnter = (el: Element): void => {
-  const element = el as HTMLElement;
-  element.style.maxHeight = '0px';
-  element.style.opacity = '0';
-};
+      const element = el as HTMLElement;
+      element.style.maxHeight = "0px";
+      element.style.opacity = "0";
+    };
 
-const afterEnter = (el: Element): void => {
-  const element = el as HTMLElement;
-  element.style.maxHeight = '1000px'; // Adjust based on your content size
-  element.style.opacity = '1';
-};
+    const afterEnter = (el: Element): void => {
+      const element = el as HTMLElement;
+      element.style.maxHeight = "1000px"; // Adjust based on your content size
+      element.style.opacity = "1";
+    };
     const changePage = (page: number) => {
       activePage.value = page;
       showMore.value = false;
@@ -260,7 +280,6 @@ const afterEnter = (el: Element): void => {
 });
 </script>
 <style scoped>
-
 .card-wrapper {
   position: relative;
   /*display: flex; */
@@ -277,14 +296,14 @@ const afterEnter = (el: Element): void => {
 
 .translation-card {
   /* @apply bg-white rounded-sm shadow-lg transition-all duration-300 ease-in-out; */
-    padding: 30px;
-    position: relative;
-    background-color: white;
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
-    /* transition: all 0.5s ease-in-out; */
-    overflow: hidden;
-    /* height: 100px;  */
-  }
+  padding: 30px;
+  position: relative;
+  background-color: white;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+  /* transition: all 0.5s ease-in-out; */
+  overflow: hidden;
+  /* height: 100px;  */
+}
 
 /* .expandable-content{
  opacity: 50; 
@@ -297,19 +316,18 @@ const afterEnter = (el: Element): void => {
 
 .expand-fade-enter-active,
 .expand-fade-leave-active {
-    transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .expand-fade-enter,
 .expand-fade-leave-active {
-    opacity: 0;
+  opacity: 0;
 }
 
 .expand-fade-enter-active,
 .expand-fade-leave {
-    opacity: 0;
+  opacity: 0;
 }
-
 
 button {
   outline: none;
@@ -345,15 +363,14 @@ button img {
 }
 
 .translationLanguageSelector {
-  @apply absolute bottom-1 h-[44px] transition-height duration-500 ease-in-out
+  @apply absolute bottom-1 h-[44px] transition-height duration-500 ease-in-out;
 }
 
-.translationLanguageSelector:hover{
+.translationLanguageSelector:hover {
   @apply h-[104px];
 }
 
 .translationLanguageSelector:hover .language-option {
   display: block;
 }
-
 </style>

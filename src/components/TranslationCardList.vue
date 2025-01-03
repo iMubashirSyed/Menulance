@@ -1,5 +1,5 @@
 <template>
-  <div class="card-list-wrapper rounded-md shadow-lg w-full">
+  <div class="card-list-wrapper rounded-md w-full">
     <!-- Cards List -->
     <div class="flex flex-col w-full items-center gap-2">
       <TranslationCard
@@ -10,18 +10,16 @@
         :activeDot="activeDot"
       />
 
-<!-- "More Results" Section -->
-<div
-  v-if="!showAllCards"
-  class="more-results-section cursor-pointer w-[70%]"
-  @click="showMoreCards"
->
-  <button class="more-results-btn w-full">
-    ▼ More Results
-  </button>
-</div>
-</div>
+      <!-- "More Results" Section -->
+      <div
+        v-if="!showAllCards"
+        class="more-results-section cursor-pointer w-[70%]"
+        @click="showMoreCards"
+      >
+        <button class="more-results-btn w-full">▼ More Results</button>
+      </div>
     </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -65,7 +63,9 @@ export default defineComponent({
   background: linear-gradient(to bottom, #ffffff, #898686);
   text-align: center;
   padding: 20px 0;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
 }
 
 .more-results-section:hover {

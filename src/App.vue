@@ -1,9 +1,13 @@
 <template>
-  <div class="bg-black min-h-screen flex flex-col items-center justify-start">
+  <div class="bg-gray-50 min-h-screen flex flex-col items-center justify-start">
     <!-- English Egg Image and Text -->
-    <div class="text-center text-gray-300 flex flex-col items-center mb-12">
+    <div class="text-center text-black flex flex-col items-center mb-12">
       <img src="/english-egg.png" alt="English" class="w-12 h-12 mb-4" />
-      <h1 class="text-3xl font-bold">English</h1>
+      <h1
+        class="text-3xl text-base-content leading-[51px] lowercase font-light"
+      >
+        English
+      </h1>
     </div>
 
     <!-- Cards Section -->
@@ -11,11 +15,15 @@
   </div>
 
   <div
-    class="bg-black min-h-screen flex flex-col items-center justify-start p-4"
+    class="bg-gray-50 min-h-screen flex flex-col items-center justify-start p-4"
   >
-    <div class="text-center text-gray-300 flex flex-col items-center mb-12">
+    <div class="text-center text-black flex flex-col items-center mb-12">
       <img src="/taco-tasty.png" alt="English" class="w-12 h-12 mb-4" />
-      <h1 class="text-3xl font-bold">Spanish</h1>
+      <h1
+        class="text-3xl text-base-content leading-[51px] lowercase font-light"
+      >
+        Spanish
+      </h1>
     </div>
     <TranslationCardList />
   </div>
