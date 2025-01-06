@@ -1,5 +1,5 @@
 <template>
-  <div class="card-wrapper relative w-[70%]">
+  <div class="card-wrapper relative w-[85%]" @click="toggleFullCard">
     <!-- Translation Card -->
     <div :class="['translation-card', showFullCard ? 'expanded' : 'collapsed']">
       <!-- Heading with Copy to Clipboard -->
@@ -7,10 +7,13 @@
         <h1
           ref="headingText"
           class="text-2xl font-light"
-          :class="showFullCard ? 'font-semibold' : 'font-normal text-gray-400'"
+          :class="[
+            showFullCard ? 'font-light' : 'font-light text-gray-400',
+            !showFullCard ? 'hover:text-black cursor-pointer' : '',
+          ]"
         >
           <span
-            class="text-gray-400 text-center hover:text-black cursor-pointer"
+            class="text-gray-400 text-center hover:text-black"
             v-html="highlightedHeading"
           ></span>
           <button
@@ -35,10 +38,10 @@
         <!-- Meaning Section -->
         <transition name="fade-page" mode="out-in">
           <div :key="activePage">
-            <h2 class="text-lg font-medium text-gray-400 mb-2">
+            <h2 class="text-lg font-light text-gray-400 mb-2">
               <span class="text-black">{{ currentPage.meaning }}</span> meaning
             </h2>
-            <ul class="text-gray-400 space-y-2 mb-6">
+            <ul class="font-light text-lg text-gray-400 space-y-2">
               <li
                 v-for="(desc, index) in getDescriptions(
                   currentPage.description
@@ -48,13 +51,16 @@
                 {{ index + 1 }}.
                 <span v-if="index === 1">
                   {{ desc.substring(0, desc.length / 2) }}<span>... </span>
+
+                  <!-- Only show the "More" button if it's not clicked yet -->
                   <button
-                    :class="{ 'opacity-0': showMore, 'opacity-100': !showMore }"
+                    v-if="!showMore"
                     @click="toggleMore"
-                    class="text-blue-500 transition-opacity duration-500 ease-in-out"
+                    class="text-blue-500"
                   >
                     More
                   </button>
+
                   <!-- Second half of the description (hidden until "More" is clicked) -->
                   <span
                     :class="{ 'opacity-0': !showMore, 'opacity-100': showMore }"
@@ -62,7 +68,19 @@
                   >
                     {{ desc.substring(desc.length / 2) }}
                   </span>
+
+                  <!-- Extra Message Section that appears after the "More" button -->
+                  <div
+                    :class="{ 'opacity-0': !showMore, 'opacity-100': showMore }"
+                    class="extra-message text-gray-400 font-light mt-2 transition-opacity duration-500 ease-in-out"
+                  >
+                    {{ currentPage.extraMessage }}
+                    <button @click="toggleMore" class="text-blue-500 mt-2">
+                      Less
+                    </button>
+                  </div>
                 </span>
+
                 <span v-else>{{ desc }}</span>
               </li>
             </ul>
@@ -70,11 +88,9 @@
         </transition>
 
         <!-- Extra Message -->
-        <div
-          :class="{ 'opacity-0 ': !showMore, 'opacity-100 ': showMore }"
-          class="extra-message text-gray-400 text-base transition-opacity duration-500 ease-in-out overflow-hidden"
+        <!-- <div
+          class="text-gray-400 transition-opacity duration-500 ease-in-out overflow-hidden"
         >
-          {{ currentPage.extraMessage }}
           <button
             v-if="showMore"
             @click="toggleMore"
@@ -82,7 +98,7 @@
           >
             Less
           </button>
-        </div>
+        </div> -->
 
         <!-- Pagination Dots -->
         <div class="flex justify-center space-x-2 mt-4 cursor-pointer">
@@ -102,7 +118,7 @@
 
       <!-- Full Card Toggle Button -->
       <button
-        @click="toggleFullCard"
+        @click.stop="toggleCollapseCard"
         class="absolute bottom-6 right-4"
         title="Toggle Expand/Collapse"
       >
@@ -206,28 +222,18 @@ export default defineComponent({
       showMore.value = !showMore.value;
     };
 
-    const toggleFullCard = (event: Event) => {
-      const button = event.currentTarget as HTMLElement;
-      const card = button.closest(".translation-card") as HTMLElement;
-      if (!card) return;
-
+    const toggleFullCard = () => {
       if (!showFullCard.value) {
-        card.style.height = "auto";
-        card.classList.remove("collapsed");
-        card.classList.add("expanded");
-      } else {
-        const currentHeight = card.offsetHeight;
-        // card.style.height = `${currentHeight}px`;
-        requestAnimationFrame(() => {
-          // card.style.height = '100px';
-        });
-        card.classList.remove("expanded");
-        card.classList.add("collapsed");
-
-        showMore.value = false;
+        // Expand the card if it's collapsed
+        showFullCard.value = true;
       }
+      // No need to do anything if the card is already expanded
+    };
 
-      showFullCard.value = !showFullCard.value;
+    const toggleCollapseCard = () => {
+      // Collapse the card only when the up arrow is clicked
+      showFullCard.value = false;
+      showMore.value = false; // Reset "show more" section
     };
 
     // Correctly typed methods for lifecycle hooks
@@ -275,6 +281,7 @@ export default defineComponent({
       getDescriptions,
       copyToClipboard,
       headingText,
+      toggleCollapseCard,
     };
   },
 });

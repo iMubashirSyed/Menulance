@@ -13,7 +13,7 @@
       <!-- "More Results" Section -->
       <div
         v-if="!showAllCards"
-        class="more-results-section cursor-pointer w-[70%]"
+        class="more-results-section cursor-pointer w-[85%]"
         @click="showMoreCards"
       >
         <button class="more-results-btn w-full">▼ More Results</button>
