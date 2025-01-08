@@ -25,8 +25,9 @@ export const arr: arrType[] = [
       page1: {
         meaning: "Fettuccine caseras",
         description: [
-          "Fettuccine that is made from scratch using ingredients like flour, eggs, and water, rather than store-bought or pre-packaged. It is rolled out and cut into flat, ribbon-like strips, often providing a richer and more personalized flavor and texture.",
-          "Artisanal Preparation: Fettuccine that is crafted by hand, often reflecting traditional methods and recipes. This type of fettuccine is usually made with a focus on quality and authenticity, distinguishing it from mass-produced pasta lorem. ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "Fettuccine that is made from scratch using ingredients like flour, eggs, and water, rather than store-bought or pre-packaged. It is rolled out and cut into flat, ribbon-like strips, often providing a richer and more personalized flavor and texture.Menulance",
+          "Artisanal Preparation: Fettuccine that is crafted by hand, often reflecting traditional methods and recipes.Wiktionary",
+          "This type of fettuccine is usually made with a focus on quality and authenticity, distinguishing it from mass-produced pasta lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         ],
         extraMessage:
           "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -35,7 +36,8 @@ export const arr: arrType[] = [
         meaning: "salsa de pato",
         description: [
           "salsa de pato that is made from scratch using ingredients like flour, eggs, and water, rather than store-bought or pre-packaged. It is rolled out and cut into flat, ribbon-like strips, often providing a richer and more personalized flavor and texture.",
-          "Artisanal Preparation: Fettuccine that is crafted by hand, often reflecting traditional methods and recipes. This type of fettuccine is usually made with a focus on quality and authenticity, distinguishing it from mass-produced pasta lo. ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "Artisanal Preparation: Fettuccine that is crafted by hand, often reflecting traditional methods and recipes.Wiktionary",
+          "This type of fettuccine is usually made with a focus on quality and authenticity, distinguishing it from mass-produced pasta lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         ],
         extraMessage:
           "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -50,8 +52,9 @@ export const arr: arrType[] = [
       page1: {
         meaning: "Homemade fettuccine",
         description: [
-          "Fettuccine that is made from scratch using ingredients like flour, eggs, and water, rather than store-bought or pre-packaged. It is rolled out and cut into flat, ribbon-like strips, often providing a richer and more personalized flavor and texture.",
-          "Artisanal Preparation: Fettuccine that is crafted by hand, often reflecting traditional methods and recipes. This type of fettuccine is usually made with a focus on quality and authenticity, distinguishing it from mass-produced pasta lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "Fettuccine that is made from scratch using ingredients like flour, eggs, and water, rather than store-bought or pre-packaged. It is rolled out and cut into flat, ribbon-like strips, often providing a richer and more personalized flavor and texture.Menulance",
+          "Artisanal Preparation: Fettuccine that is crafted by hand, often reflecting traditional methods and recipes.Wiktionary",
+          "This type of fettuccine is usually made with a focus on quality and authenticity, distinguishing it from mass-produced pasta lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         ],
         extraMessage:
           "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
@@ -60,7 +63,8 @@ export const arr: arrType[] = [
         meaning: "duck dong",
         description: [
           "salsa de pato that is made from scratch using ingredients like flour, eggs, and water, rather than store-bought or pre-packaged. It is rolled out and cut into flat, ribbon-like strips, often providing a richer and more personalized flavor and texture.",
-          "Artisanal Preparation: Fettuccine that is crafted by hand, often reflecting traditional methods and recipes. This type of fettuccine is usually made with a focus on quality and authenticity, distinguishing it from mass-produced pasta lo. ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "Artisanal Preparation: Fettuccine that is crafted by hand, often reflecting traditional methods and recipes.Wiktionary",
+          "This type of fettuccine is usually made with a focus on quality and authenticity, distinguishing it from mass-produced pasta lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         ],
         extraMessage:
           "Salsa roja is a key component in Mexican cuisine, adding depth and heat to many dishes.",
@@ -75,8 +79,9 @@ export const arr: arrType[] = [
       page1: {
         meaning: "Fettuccine caseras",
         description: [
-          "Fettuccine that is made from scratch using ingredients like flour, eggs, and water, rather than store-bought or pre-packaged. It is rolled out and cut into flat, ribbon-like strips, often providing a richer and more personalized flavor and texture.",
-          "Artisanal Preparation: Fettuccine that is crafted by hand, often reflecting traditional methods and recipes. This type of fettuccine is usually made with a focus on quality and authenticity, distinguishing it from mass-produced pasta lorem. ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "Fettuccine that is made from scratch using ingredients like flour, eggs, and water, rather than store-bought or pre-packaged. It is rolled out and cut into flat, ribbon-like strips, often providing a richer and more personalized flavor and texture.Menulance",
+          "Artisanal Preparation: Fettuccine that is crafted by hand, often reflecting traditional methods and recipes.Wiktionary",
+          "This type of fettuccine is usually made with a focus on quality and authenticity, distinguishing it from mass-produced pasta lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         ],
         extraMessage:
           "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -85,7 +90,8 @@ export const arr: arrType[] = [
         meaning: "salsa de pato",
         description: [
           "salsa de pato that is made from scratch using ingredients like flour, eggs, and water, rather than store-bought or pre-packaged. It is rolled out and cut into flat, ribbon-like strips, often providing a richer and more personalized flavor and texture.",
-          "Artisanal Preparation: Fettuccine that is crafted by hand, often reflecting traditional methods and recipes. This type of fettuccine is usually made with a focus on quality and authenticity, distinguishing it from mass-produced pasta lo. ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "Artisanal Preparation: Fettuccine that is crafted by hand, often reflecting traditional methods and recipes.Wiktionary",
+          "This type of fettuccine is usually made with a focus on quality and authenticity, distinguishing it from mass-produced pasta lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         ],
         extraMessage:
           "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -100,8 +106,9 @@ export const arr: arrType[] = [
       page1: {
         meaning: "Homemade fettuccine",
         description: [
-          "Fettuccine that is made from scratch using ingredients like flour, eggs, and water, rather than store-bought or pre-packaged. It is rolled out and cut into flat, ribbon-like strips, often providing a richer and more personalized flavor and texture.",
-          "Artisanal Preparation: Fettuccine that is crafted by hand, often reflecting traditional methods and recipes. This type of fettuccine is usually made with a focus on quality and authenticity, distinguishing it from mass-produced pasta lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "Fettuccine that is made from scratch using ingredients like flour, eggs, and water, rather than store-bought or pre-packaged. It is rolled out and cut into flat, ribbon-like strips, often providing a richer and more personalized flavor and texture.Menulance",
+          "Artisanal Preparation: Fettuccine that is crafted by hand, often reflecting traditional methods and recipes.Wiktionary",
+          "This type of fettuccine is usually made with a focus on quality and authenticity, distinguishing it from mass-produced pasta lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         ],
         extraMessage:
           "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
@@ -110,7 +117,8 @@ export const arr: arrType[] = [
         meaning: "duck dong",
         description: [
           "salsa de pato that is made from scratch using ingredients like flour, eggs, and water, rather than store-bought or pre-packaged. It is rolled out and cut into flat, ribbon-like strips, often providing a richer and more personalized flavor and texture.",
-          "Artisanal Preparation: Fettuccine that is crafted by hand, often reflecting traditional methods and recipes. This type of fettuccine is usually made with a focus on quality and authenticity, distinguishing it from mass-produced pasta lo. ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "Artisanal Preparation: Fettuccine that is crafted by hand, often reflecting traditional methods and recipes.Wiktionary",
+          "This type of fettuccine is usually made with a focus on quality and authenticity, distinguishing it from mass-produced pasta lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         ],
         extraMessage:
           "Salsa roja is a key component in Mexican cuisine, adding depth and heat to many dishes.",
@@ -124,8 +132,9 @@ export const arr: arrType[] = [
       page1: {
         meaning: "Fettuccine caseras",
         description: [
-          "Fettuccine that is made from scratch using ingredients like flour, eggs, and water, rather than store-bought or pre-packaged. It is rolled out and cut into flat, ribbon-like strips, often providing a richer and more personalized flavor and texture.",
-          "Artisanal Preparation: Fettuccine that is crafted by hand, often reflecting traditional methods and recipes. This type of fettuccine is usually made with a focus on quality and authenticity, distinguishing it from mass-produced pasta lorem. ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "Fettuccine that is made from scratch using ingredients like flour, eggs, and water, rather than store-bought or pre-packaged. It is rolled out and cut into flat, ribbon-like strips, often providing a richer and more personalized flavor and texture.Menulance",
+          "Artisanal Preparation: Fettuccine that is crafted by hand, often reflecting traditional methods and recipes.Wiktionary",
+          "This type of fettuccine is usually made with a focus on quality and authenticity, distinguishing it from mass-produced pasta lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         ],
         extraMessage:
           "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -134,7 +143,8 @@ export const arr: arrType[] = [
         meaning: "salsa de pato",
         description: [
           "salsa de pato that is made from scratch using ingredients like flour, eggs, and water, rather than store-bought or pre-packaged. It is rolled out and cut into flat, ribbon-like strips, often providing a richer and more personalized flavor and texture.",
-          "Artisanal Preparation: Fettuccine that is crafted by hand, often reflecting traditional methods and recipes. This type of fettuccine is usually made with a focus on quality and authenticity, distinguishing it from mass-produced pasta lo. ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "Artisanal Preparation: Fettuccine that is crafted by hand, often reflecting traditional methods and recipes.Wiktionary",
+          "This type of fettuccine is usually made with a focus on quality and authenticity, distinguishing it from mass-produced pasta lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         ],
         extraMessage:
           "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -149,8 +159,9 @@ export const arr: arrType[] = [
       page1: {
         meaning: "Homemade fettuccine",
         description: [
-          "Fettuccine that is made from scratch using ingredients like flour, eggs, and water, rather than store-bought or pre-packaged. It is rolled out and cut into flat, ribbon-like strips, often providing a richer and more personalized flavor and texture.",
-          "Artisanal Preparation: Fettuccine that is crafted by hand, often reflecting traditional methods and recipes. This type of fettuccine is usually made with a focus on quality and authenticity, distinguishing it from mass-produced pasta lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "Fettuccine that is made from scratch using ingredients like flour, eggs, and water, rather than store-bought or pre-packaged. It is rolled out and cut into flat, ribbon-like strips, often providing a richer and more personalized flavor and texture.Menulance",
+          "Artisanal Preparation: Fettuccine that is crafted by hand, often reflecting traditional methods and recipes.Wiktionary",
+          "This type of fettuccine is usually made with a focus on quality and authenticity, distinguishing it from mass-produced pasta lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         ],
         extraMessage:
           "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
@@ -159,7 +170,8 @@ export const arr: arrType[] = [
         meaning: "duck dong",
         description: [
           "salsa de pato that is made from scratch using ingredients like flour, eggs, and water, rather than store-bought or pre-packaged. It is rolled out and cut into flat, ribbon-like strips, often providing a richer and more personalized flavor and texture.",
-          "Artisanal Preparation: Fettuccine that is crafted by hand, often reflecting traditional methods and recipes. This type of fettuccine is usually made with a focus on quality and authenticity, distinguishing it from mass-produced pasta lo. ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "Artisanal Preparation: Fettuccine that is crafted by hand, often reflecting traditional methods and recipes.Wiktionary",
+          "This type of fettuccine is usually made with a focus on quality and authenticity, distinguishing it from mass-produced pasta lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         ],
         extraMessage:
           "Salsa roja is a key component in Mexican cuisine, adding depth and heat to many dishes.",
@@ -174,8 +186,9 @@ export const arr: arrType[] = [
       page1: {
         meaning: "Homemade fettuccine",
         description: [
-          "Fettuccine that is made from scratch using ingredients like flour, eggs, and water, rather than store-bought or pre-packaged. It is rolled out and cut into flat, ribbon-like strips, often providing a richer and more personalized flavor and texture.",
-          "Artisanal Preparation: Fettuccine that is crafted by hand, often reflecting traditional methods and recipes. This type of fettuccine is usually made with a focus on quality and authenticity, distinguishing it from mass-produced pasta lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "Fettuccine that is made from scratch using ingredients like flour, eggs, and water, rather than store-bought or pre-packaged. It is rolled out and cut into flat, ribbon-like strips, often providing a richer and more personalized flavor and texture.Menulance",
+          "Artisanal Preparation: Fettuccine that is crafted by hand, often reflecting traditional methods and recipes.Wiktionary",
+          "This type of fettuccine is usually made with a focus on quality and authenticity, distinguishing it from mass-produced pasta lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         ],
         extraMessage:
           "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
@@ -184,7 +197,8 @@ export const arr: arrType[] = [
         meaning: "duck dong",
         description: [
           "salsa de pato that is made from scratch using ingredients like flour, eggs, and water, rather than store-bought or pre-packaged. It is rolled out and cut into flat, ribbon-like strips, often providing a richer and more personalized flavor and texture.",
-          "Artisanal Preparation: Fettuccine that is crafted by hand, often reflecting traditional methods and recipes. This type of fettuccine is usually made with a focus on quality and authenticity, distinguishing it from mass-produced pasta lo. ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "Artisanal Preparation: Fettuccine that is crafted by hand, often reflecting traditional methods and recipes.Wiktionary",
+          "This type of fettuccine is usually made with a focus on quality and authenticity, distinguishing it from mass-produced pasta lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         ],
         extraMessage:
           "Salsa roja is a key component in Mexican cuisine, adding depth and heat to many dishes.",

@@ -1,15 +1,21 @@
 <template>
   <div class="card-wrapper relative w-[85%]" @click="toggleFullCard">
     <!-- Translation Card -->
-    <div :class="['translation-card', showFullCard ? 'expanded' : 'collapsed']">
+    <div
+      :class="[
+        'translation-card transition-height duration-500 ease-in-out',
+        showFullCard ? 'expanded' : 'collapsed',
+      ]"
+    >
       <!-- Heading with Copy to Clipboard -->
       <div class="flex items-center mb-2 text-center">
         <h1
           ref="headingText"
           class="text-2xl font-light"
           :class="[
-            showFullCard ? 'font-light' : 'font-light text-gray-400',
-            !showFullCard ? 'hover:text-black cursor-pointer' : '',
+            showFullCard
+              ? 'font-light'
+              : 'font-light text-gray-400 hover:text-black cursor-pointer',
           ]"
         >
           <span
@@ -38,10 +44,22 @@
         <!-- Meaning Section -->
         <transition name="fade-page" mode="out-in">
           <div :key="activePage">
-            <h2 class="text-lg font-light text-gray-400 mb-2">
+            <h2
+              :class="{
+                'opacity-0': !showFullCard,
+                'opacity-100': showFullCard,
+              }"
+              class="text-lg font-light text-gray-400 mb-2 transition-opacity duration-500 ease-in-out overflow-hidden"
+            >
               <span class="text-black">{{ currentPage.meaning }}</span> meaning
             </h2>
-            <ul class="font-light text-lg text-gray-400 space-y-2">
+            <ul
+              :class="{
+                'opacity-0': !showFullCard,
+                'opacity-100': showFullCard,
+              }"
+              class="font-light text-lg text-gray-400 space-y-2 transition-opacity duration-500 ease-in-out overflow-hidden"
+            >
               <li
                 v-for="(desc, index) in getDescriptions(
                   currentPage.description
@@ -49,16 +67,17 @@
                 :key="index"
               >
                 {{ index + 1 }}.
-                <span v-if="index === 1">
-                  {{ desc.substring(0, desc.length / 2) }}<span>... </span>
+                <span v-if="index === 2">
+                  {{ desc.substring(0, Math.floor(desc.length / 2))
+                  }}<span>.</span>
 
                   <!-- Only show the "More" button if it's not clicked yet -->
                   <button
                     v-if="!showMore"
                     @click="toggleMore"
-                    class="text-blue-500"
+                    class="text-black underline text-base hover:text-gray-400"
                   >
-                    More
+                    more
                   </button>
 
                   <!-- Second half of the description (hidden until "More" is clicked) -->
@@ -66,21 +85,9 @@
                     :class="{ 'opacity-0': !showMore, 'opacity-100': showMore }"
                     class="transition-opacity duration-500 ease-in-out overflow-hidden"
                   >
-                    {{ desc.substring(desc.length / 2) }}
+                    {{ desc.substring(Math.floor(desc.length / 2)) }}
                   </span>
-
-                  <!-- Extra Message Section that appears after the "More" button -->
-                  <div
-                    :class="{ 'opacity-0': !showMore, 'opacity-100': showMore }"
-                    class="extra-message text-gray-400 font-light mt-2 transition-opacity duration-500 ease-in-out"
-                  >
-                    {{ currentPage.extraMessage }}
-                    <button @click="toggleMore" class="text-blue-500 mt-2">
-                      Less
-                    </button>
-                  </div>
                 </span>
-
                 <span v-else>{{ desc }}</span>
               </li>
             </ul>
@@ -88,18 +95,20 @@
         </transition>
 
         <!-- Extra Message -->
-        <!-- <div
-          class="text-gray-400 transition-opacity duration-500 ease-in-out overflow-hidden"
-        >
-          <button
-            v-if="showMore"
+        <transition name="fade">
+          <div
+            v-show="showMore"
             @click="toggleMore"
-            class="text-blue-500 mt-2"
+            class="text-gray-400 font-light text-lg"
           >
-            Less
-          </button>
-        </div> -->
-
+            {{ currentPage.extraMessage }}
+            <button
+              class="text-black underline text-base hover:text-gray-400 mt-2"
+            >
+              Less
+            </button>
+          </div>
+        </transition>
         <!-- Pagination Dots -->
         <div class="flex justify-center space-x-2 mt-4 cursor-pointer">
           <span
@@ -120,7 +129,6 @@
       <button
         @click.stop="toggleCollapseCard"
         class="absolute bottom-6 right-4"
-        title="Toggle Expand/Collapse"
       >
         <img :src="showFullCard ? '/up-arrow.png' : '/down-arrow.png'" />
       </button>
@@ -215,7 +223,7 @@ export default defineComponent({
     });
 
     const getDescriptions = (descriptions: string[]) => {
-      return showMore.value ? descriptions : descriptions.slice(0, 2);
+      return showMore.value ? descriptions : descriptions.slice(0, 3);
     };
 
     const toggleMore = () => {
@@ -227,7 +235,6 @@ export default defineComponent({
         // Expand the card if it's collapsed
         showFullCard.value = true;
       }
-      // No need to do anything if the card is already expanded
     };
 
     const toggleCollapseCard = () => {
@@ -302,14 +309,22 @@ export default defineComponent({
 }
 
 .translation-card {
-  /* @apply bg-white rounded-sm shadow-lg transition-all duration-300 ease-in-out; */
+  /* @apply relative bg-white rounded-sm shadow-lg transition-height duration-300 ease-in-out; */
   padding: 30px;
   position: relative;
   background-color: white;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
-  /* transition: all 0.5s ease-in-out; */
+  transition: height 0.5s ease-in-out;
   overflow: hidden;
   /* height: 100px;  */
+}
+
+.translation-card.collapsed {
+  max-height: 100px; /* Adjust to your preferred collapsed height */
+}
+
+.translation-card.expanded {
+  height: auto; /* Fully expanded state */
 }
 
 /* .expandable-content{
@@ -379,5 +394,18 @@ button img {
 
 .translationLanguageSelector:hover .language-option {
   display: block;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease-in-out;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+.fade-enter-to,
+.fade-leave-from {
+  opacity: 1;
 }
 </style>
