@@ -1,5 +1,5 @@
 <template>
-  <div class="card-wrapper relative w-[85%]" @click="toggleFullCard">
+  <div class="card-wrapper relative w-[85%]">
     <!-- Translation Card -->
     <div
       :class="[
@@ -8,18 +8,22 @@
       ]"
     >
       <!-- Heading with Copy to Clipboard -->
-      <div class="flex items-center mb-2 text-center">
+      <div
+        class="flex items-center mb-2 text-center"
+        @click="toggleFullCardExpand"
+      >
         <h1
           ref="headingText"
           class="text-2xl font-light"
           :class="[
             showFullCard
               ? 'font-light'
-              : 'font-light text-gray-400 hover:text-black cursor-pointer',
+              : 'font-light text-gray-400 cursor-pointer',
           ]"
         >
           <span
-            class="text-gray-400 text-center hover:text-black"
+            :class="hoverHeadingClass"
+            class="text-gray-400 text-center"
             v-html="highlightedHeading"
           ></span>
           <button
@@ -126,10 +130,7 @@
       <!-- </transition> -->
 
       <!-- Full Card Toggle Button -->
-      <button
-        @click.stop="toggleCollapseCard"
-        class="absolute bottom-6 right-4"
-      >
+      <button @click="toggleFullCard" class="absolute bottom-6 right-4">
         <img :src="showFullCard ? '/up-arrow.png' : '/down-arrow.png'" />
       </button>
     </div>
@@ -203,6 +204,12 @@ export default defineComponent({
         : props.page.body.page2;
     });
 
+    const hoverHeadingClass = computed(() => {
+      return showFullCard.value
+        ? "text-gray-400 text-center" // No hover effect when the card is expanded
+        : "text-gray-400 text-center hover:text-black"; // Hover effect when collapsed
+    });
+
     const highlightedHeading = computed(() => {
       const meaning = currentPage.value.meaning;
       const heading = props.page.heading;
@@ -231,10 +238,12 @@ export default defineComponent({
     };
 
     const toggleFullCard = () => {
-      if (!showFullCard.value) {
-        // Expand the card if it's collapsed
-        showFullCard.value = true;
-      }
+      // Expand the card if it's collapsed
+      showFullCard.value = !showFullCard.value;
+    };
+
+    const toggleFullCardExpand = () => {
+      showFullCard.value = true;
     };
 
     const toggleCollapseCard = () => {
@@ -289,6 +298,8 @@ export default defineComponent({
       copyToClipboard,
       headingText,
       toggleCollapseCard,
+      hoverHeadingClass,
+      toggleFullCardExpand,
     };
   },
 });
