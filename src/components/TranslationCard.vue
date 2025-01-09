@@ -2,10 +2,8 @@
   <div class="card-wrapper relative w-[85%]">
     <!-- Translation Card -->
     <div
-      :class="[
-        'translation-card transition-height duration-500 ease-in-out',
-        showFullCard ? 'expanded' : 'collapsed',
-      ]"
+      :class="['translation-card', showFullCard ? 'expanded' : 'collapsed']"
+      class="transition-height duration-500 ease-in-out"
     >
       <!-- Heading with Copy to Clipboard -->
       <div
@@ -73,7 +71,7 @@
                 {{ index + 1 }}.
                 <span v-if="index === 2">
                   {{ desc.substring(0, Math.floor(desc.length / 2))
-                  }}<span>.</span>
+                  }}<span v-if="!showMore">...</span>
 
                   <!-- Only show the "More" button if it's not clicked yet -->
                   <button
@@ -102,6 +100,7 @@
         <transition name="fade">
           <div
             v-show="showMore"
+            :class="{}"
             @click="toggleMore"
             class="text-gray-400 font-light text-lg"
           >
@@ -335,7 +334,7 @@ export default defineComponent({
 }
 
 .translation-card.expanded {
-  height: auto; /* Fully expanded state */
+  max-height: 700px; /* Fully expanded state */
 }
 
 /* .expandable-content{
